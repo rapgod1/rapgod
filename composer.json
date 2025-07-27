@@ -1,5 +1,5 @@
 {
     "scripts": {
-      "start": "php long[pll.php"
+      "start": "php longpoll.php"
     }
   }
