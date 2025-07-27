@@ -1,7 +1,7 @@
 <?php
 
 $token = "8473441275:AAGnWHju-vvGtWvdGU3gmt-smwMJ8PusT_0";
-$api = "https://api.telegram.org/bot$token/";
+$api = "http://api.telegram.org/bot$token/";
 $offset = 0;
 
 while (true) {
