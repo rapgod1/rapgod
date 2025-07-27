@@ -1,5 +1,5 @@
 {
     "scripts": {
-      "start": "php longpoll.php"
+      "start": "php bot.php"
     }
   }
