@@ -1,17 +1,25 @@
 <?php
+
 $token = "8473441275:AAGnWHju-vvGtWvdGU3gmt-smwMJ8PusT_0";
+$api = "https://api.telegram.org/bot$token/";
 $offset = 0;
 
 while (true) {
-    $response = file_get_contents("https://api.telegram.org/bot$token/getUpdates?offset=$offset&timeout=30");
+    $response = file_get_contents($api . "getUpdates?offset=$offset&timeout=30");
     $updates = json_decode($response, true);
 
-    if ($updates["ok"]) {
+    if (isset($updates["result"])) {
         foreach ($updates["result"] as $update) {
             $offset = $update["update_id"] + 1;
-            // اینجا اتصال به bot.php یا لاگ گرفتن یا هر کاری
+
+            // اینجا پیام جدید اومده
+            // ما متغیر $update رو می‌سازیم و فایل اصلی رباتو اجرا می‌کنیم
+            global $update;
+            $update = json_decode(json_encode($update), false); // تبدیل به object مثل php://input
+
+            require 'bot.php'; // ← این خط باعث می‌شه کد اصلیت اجرا شه
         }
     }
 
-    sleep(1); // استراحت کوتاه بین هر حلقه
+    sleep(1);
 }
