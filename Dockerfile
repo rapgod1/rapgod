@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["php", "longpoll.php"]
+CMD ["php", "bot.php"]
